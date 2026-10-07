@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>【主名稱】一頁重點</title>
+<!--
+Stolas 一頁重點模板 (直式 A4，794×1123 px，固定一頁)。
+用法：複製本檔為 stolas-<slug>-onepage.html，只替換【】內的文字與增刪標明可增刪的區塊，
+CSS 不要修改 (配色由 build_pdf.py 依學科與深淺自動套用，不要手改顏色)。字數上限寫在各區塊的註解中，超過時先刪減文字，不縮小字級。
+build_pdf.py 會檢查內容是否超出一頁，超出就會報錯，依提示刪減後重跑。
+-->
+<style>
+@page{size:A4;margin:0}
+:root{--accent:#0B6E69;--accent-fg:#FFFFFF;--accent-ink:#0B6E69;--accent-soft:#E7F2F1}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff}
+body{line-height:1.5;font-family:'Noto Sans CJK TC','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;color:#1C2024;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:794px;height:1123px;padding:36px 48px;display:flex;flex-direction:column;gap:16px;overflow:hidden}
+.mono{font-family:'IBM Plex Mono','Noto Sans Mono CJK TC',monospace}
+header{display:flex;flex-direction:column;gap:8px;padding-bottom:14px;border-bottom:2px solid #1C2024}
+.meta{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.08em;color:#4A5560}
+.title{display:flex;align-items:baseline;gap:14px}
+h1{margin:0;font-size:40px;font-weight:900;line-height:1.1;letter-spacing:.02em}
+.orig{font-size:20px;font-weight:500;color:#4A5560}
+.def{margin:0;font-size:15px;line-height:1.6}
+section{display:flex;flex-direction:column;gap:10px}
+.sh{display:flex;align-items:baseline;gap:10px}
+.sh .no{font-size:13px;color:var(--accent-ink)}
+h2{margin:0;font-size:18px;font-weight:700}
+.flow{gap:6px}
+.source{background:var(--accent);color:var(--accent-fg);border-radius:8px;padding:9px 16px;text-align:center;font-size:15px;font-weight:700}
+.row{display:grid;gap:12px}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.chev{display:grid;gap:12px;justify-items:center}
+.card{border:1px solid #C9D0D6;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card.key{border:2px solid var(--accent-ink);padding:11px}
+.card .hd{display:flex;justify-content:space-between;align-items:center}
+.card .nm{font-size:16px;font-weight:700}
+.card .tag{font-size:12px;color:#4A5560}
+.card.key .tag{font-weight:700;color:var(--accent-fg);background:var(--accent);border-radius:4px;padding:1px 8px}
+.card p{margin:0;font-size:14px;line-height:1.5}
+.out{background:var(--accent-soft);border-radius:8px;padding:9px 12px;text-align:center;font-size:15px;font-weight:700}
+.span2{grid-column:span 2}.span3{grid-column:span 3}.span4{grid-column:span 4}
+.cmp{display:flex;align-items:center;gap:10px;background:#F4F6F7;border-radius:8px;padding:10px 12px}
+.cmp>div{display:flex;flex-direction:column;gap:2px;flex-grow:1}
+.cmp .lb{font-size:12px;color:#4A5560}
+.cmp .v{font-size:22px}
+.cmp .v.hi{color:var(--accent-ink)}
+.pts{display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.45}
+th{text-align:left;padding:6px 8px;border-bottom:2px solid #1C2024}
+td{padding:6px 8px;border-bottom:1px solid #C9D0D6}
+td:first-child{color:#4A5560}
+.terms{display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5}
+.warn{background:#F7EEE3;border-radius:8px;padding:12px 14px}
+.warn .no{color:#8A4F0F}
+.warn .review{color:#6B3D0B}
+header{border-bottom-color:var(--accent-ink)}
+.fig{gap:8px}
+.fig img{width:100%;max-height:330px;object-fit:contain;border-radius:8px;background:#fff}
+.fig .cap{margin:0;font-size:12px;color:#4A5560;line-height:1.45}
+footer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;background:#F4F6F7;border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.55}
+</style>
+</head>
+<body>
+<div class="page" id="onepage">
+
+<!-- 標頭：學科 1 到 3 個；一句話定義取教材「一句話定義」的最終版，60 字以內 -->
+<header>
+<div class="meta mono"><span>STOLAS · 一頁重點</span><span>【學科一】／【學科二】 · 【YYYY-MM-DD】</span></div>
+<div class="title"><h1>【主名稱】</h1><span class="orig">【原文名稱】</span></div>
+<p class="def">【一句話定義】</p>
+</header>
+
+<!-- 01 核心機制圖：起點 → 2 到 4 個分支或步驟 → 結果。
+     卡片數改成 2 或 4 時，把三處的 c3 換成 c2 或 c4，箭頭數量同步增減。
+     最重要的一張卡片加上 class="card key"，其餘用 class="card"；沒有特別重要的就都用 card。
+     起點 ≤ 24 字；卡片名稱 ≤ 6 字、標籤 ≤ 4 字、說明 ≤ 30 字；結果 ≤ 30 字。
+     結果可以一格跨多欄 (span2、span3)，也可以每欄各一格。
+     經典文本單元：起點寫全篇主旨，卡片寫各段或各聯的功能，結果寫全篇結構 (例如「秋景 → 身世 → 病愁」)。
+     換成圖片：符合 references/doc-template.md「一頁重點的圖片」的條件時，整個 01 section (或 02、03 其中一個 section) 可以換成以下結構，
+     圖片檔放在本 HTML 同一個資料夾：
+       <section class="fig">
+       <div class="sh"><span class="no mono">01</span><h2>【圖的標題】</h2></div>
+       <img src="【圖片檔名.svg 或 .jpg】" alt="【圖說】">
+       <p class="cap">【圖說 ≤ 30 字】｜【出處、作者與授權，例如 NOAA，公有領域；自繪示意圖則寫「本單元自繪」】</p>
+       </section>
+     放在 02 或 03 位置時，把 max-height 的限制保留原樣即可，版面會自動縮放。 -->
+<section class="flow">
+<div class="sh"><span class="no mono">01</span><h2>【核心機制的標題】</h2></div>
+<div class="source">【起點】</div>
+<div class="chev c3"><svg width="16" height="14" viewBox="0 0 16 14"><path d="M2 3 L8 10 L14 3" fill="none" stroke="#4A5560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="16" height="14" viewBox="0 0 16 14"><path d="M2 3 L8 10 L14 3" fill="none" stroke="#4A5560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="16" height="14" viewBox="0 0 16 14"><path d="M2 3 L8 10 L14 3" fill="none" stroke="#4A5560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="row c3">
+<div class="card"><div class="hd"><span class="nm">【卡片一】</span><span class="tag">【標籤】</span></div><p>【說明】</p></div>
+<div class="card key"><div class="hd"><span class="nm">【卡片二】</span><span class="tag">【標籤】</span></div><p>【說明】</p></div>
+<div class="card"><div class="hd"><span class="nm">【卡片三】</span><span class="tag">【標籤】</span></div><p>【說明】</p></div>
+</div>
+<div class="chev c3"><svg width="16" height="14" viewBox="0 0 16 14"><path d="M2 3 L8 10 L14 3" fill="none" stroke="#4A5560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="16" height="14" viewBox="0 0 16 14"><path d="M2 3 L8 10 L14 3" fill="none" stroke="#4A5560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="16" height="14" viewBox="0 0 16 14"><path d="M2 3 L8 10 L14 3" fill="none" stroke="#4A5560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="row c3">
+<div class="out">【結果一】</div>
+<div class="out span2">【結果二】</div>
+</div>
+</section>
+
+<!-- 02 與 03：左右兩張重點卡，各選一種形式 (以下兩種形式可以互換位置)：
+     A. 數字對比 + 1 到 2 條要點：適合「關鍵數字、前後變化」。標籤 ≤ 12 字、數值 ≤ 8 字、要點每條 ≤ 34 字。
+     B. 對照表 3 列：適合「和相近概念的差別」(辨析)。每格 ≤ 9 字。
+     也可以兩張都用要點 (只保留 .pts)，每張 2 到 3 條。 -->
+<div class="row c2" style="gap:20px">
+<section>
+<div class="sh"><span class="no mono">02</span><h2>【重點卡一標題】</h2></div>
+<div class="cmp">
+<div><span class="lb">【前者標籤】</span><span class="v mono">【數值】</span></div>
+<svg width="22" height="14" viewBox="0 0 22 14"><path d="M2 7 L18 7 M13 2 L19 7 L13 12" fill="none" stroke="#1C2024" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div><span class="lb">【後者標籤】</span><span class="v mono hi">【數值】</span></div>
+</div>
+<div class="pts">
+<div><b>【要點關鍵詞】</b>：【說明】</div>
+<div><b>【要點關鍵詞】</b>：【說明】</div>
+</div>
+</section>
+<section>
+<div class="sh"><span class="no mono">03</span><h2>【重點卡二標題】</h2></div>
+<table>
+<thead><tr><th></th><th>【概念甲】</th><th>【概念乙】</th></tr></thead>
+<tbody>
+<tr><td>【比較面向】</td><td>【內容】</td><td>【內容】</td></tr>
+<tr><td>【比較面向】</td><td>【內容】</td><td>【內容】</td></tr>
+<tr><td>【比較面向】</td><td>【內容】</td><td>【內容】</td></tr>
+</tbody>
+</table>
+</section>
+</div>
+
+<!-- 04 必記術語：3 到 5 個，取自術語表，每列 (含術語) ≤ 22 字。
+     經典文本單元：標題改為「名句與賞析」，改寫 2 到 3 句名句，每列格式為「<b>【名句】</b>：【一行白話與手法效果】」，每列 ≤ 40 字。
+     05 混淆提醒：1 到 2 條，優先取使用者在本單元自己犯過的誤解 (標題用「你曾混淆的地方」)；
+     使用者沒有犯過誤解時，改寫最常見的誤解 (標題改為「最常見的誤解」)。每條 ≤ 45 字。
+     建議複習：驗收部分掌握的節點；全部掌握時改寫「延伸主題：【下一個值得學的術語】」。 -->
+<div class="row c2" style="gap:20px">
+<section>
+<div class="sh"><span class="no mono">04</span><h2>必記術語</h2></div>
+<div class="terms">
+<div><b>【術語】</b>：【白話定義】</div>
+<div><b>【術語】</b>：【白話定義】</div>
+<div><b>【術語】</b>：【白話定義】</div>
+<div><b>【術語】</b>：【白話定義】</div>
+<div><b>【術語】</b>：【白話定義】</div>
+</div>
+</section>
+<section class="warn">
+<div class="sh"><span class="no mono">05</span><h2>你曾混淆的地方</h2></div>
+<div class="pts">
+<div>【錯誤說法與正確說法】</div>
+<div>【錯誤說法與正確說法】</div>
+<div class="review"><b>建議複習</b>：【節點名稱】</div>
+</div>
+</section>
+</div>
+
+<!-- 頁尾：兩則實用資訊，各 ≤ 45 字，例如「應用」「注意事項」「常見產品或例子」。沒有合適內容時整個 footer 刪除。 -->
+<footer>
+<div><b>【標題】</b>：【內容】</div>
+<div><b>【標題】</b>：【內容】</div>
+</footer>
+
+</div>
+</body>
+</html>
