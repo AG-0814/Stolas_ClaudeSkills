@@ -16,11 +16,11 @@ Stolas 是一組幫助自學的 Claude skill。遇到看不懂的專有名詞、
 ```mermaid
 flowchart LR
     A["單詞"] --> T["/stolas-thread<br>縱向學習單元"]
+    T -...->|手動| E["/stolas-exam<br>驗收"]
+    T ==>|自動| P["/stolas-print<br>PDF 學習筆記"]
     B["清單"] --> W["/stolas-web<br>心智圖主檔"]
-    T -->|自動| P["/stolas-print<br>PDF 學習筆記"]
-    T -.->|手動| E["/stolas-exam<br>驗收"]
     W -.->|手動| P
-    W -.->|手動| E
+    W -...->|手動| E
 ```
 
 實線為自動銜接，虛線為手動輸入指令。
