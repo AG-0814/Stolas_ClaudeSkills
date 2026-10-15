@@ -82,12 +82,12 @@ Stolas_ClaudeSkills/
 ├── README.md
 ├── LICENSE
 ├── stolas-thread/      SKILL.md、README.md、references/
-├── stolas-web/         SKILL.md
-├── stolas-exam/        SKILL.md、references/
+├── stolas-web/         SKILL.md、README.md
+├── stolas-exam/        SKILL.md、README.md、references/
 └── stolas-print/       SKILL.md、README.md、assets/、references/、scripts/
 ```
 
-各資料夾的詳細結構見 [stolas-thread](stolas-thread/README.md) 與 [stolas-print](stolas-print/README.md) 的說明。
+各資料夾的詳細結構與用法，見各自的 README。
 
 ## 版本沿革
 
