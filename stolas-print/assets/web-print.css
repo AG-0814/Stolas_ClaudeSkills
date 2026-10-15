@@ -1,0 +1,42 @@
+/* stolas-web PDF 樣式，由 scripts/build_web_pdf.py 讀取；--ink 與 --soft 由腳本依學科注入 */
+@page{size:A4;margin:16mm 14mm 18mm}
+@page:first{margin:0}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans CJK TC','Noto Sans TC','Microsoft JhengHei',sans-serif;color:#1C2024;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.mono{font-family:'IBM Plex Mono','Noto Sans Mono CJK TC',monospace}
+.cover{width:794px;height:1123px;padding:36px 48px;display:flex;flex-direction:column;gap:18px;break-after:page;overflow:hidden}
+header{display:flex;flex-direction:column;gap:8px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.meta{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.08em;color:#4A5560}
+.title{display:flex;align-items:baseline;gap:14px}
+h1{margin:0;font-size:40px;font-weight:900;line-height:1.1}
+.orig{font-size:20px;color:#4A5560}
+.bg{margin:0;font-size:14.5px;line-height:1.6}
+.sh{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;break-after:avoid}
+.sh .no{font-size:13px;color:var(--ink)}
+.sh .hint{margin-left:auto;font-size:12px;color:#4A5560}
+h2{margin:0;font-size:18px}
+.map{display:flex;flex-direction:column;flex-grow:1;min-height:400px}
+.map .box{flex-grow:1;display:flex;align-items:center;justify-content:center;background:#FAFBFB;border-radius:10px;padding:10px;min-height:0}
+.map svg{width:100%;height:auto;max-height:100%}
+.map .section-root circle{fill:var(--ink)!important}
+.map .section-root text,.map .section-root span,.map .section-root div{fill:#fff!important;color:#fff!important;font-weight:700}
+.stat{display:flex;gap:28px;font-size:13px;color:#4A5560;border-top:1px solid #C9D0D6;padding-top:10px;margin-top:auto}
+.stat b{color:#1C2024;font-size:16px;margin-right:4px}
+section{margin-bottom:22px}
+.cover section{margin-bottom:0}
+.newpage{break-before:page}
+.ones{columns:2;column-gap:24px}
+.one{break-inside:avoid;padding:7px 0;border-bottom:1px solid #E1E5E8;font-size:13px}
+.one .k{font-size:11px;color:var(--ink);margin-right:6px}
+.one p{margin:2px 0 0}
+.tbl{break-inside:avoid}
+table{border-collapse:collapse;width:100%;font-size:12.5px;line-height:1.45}
+thead{display:table-header-group}
+tr{break-inside:avoid}
+th{text-align:left;padding:5px 8px;border-bottom:2px solid #1C2024}
+td{padding:5px 8px;border-bottom:1px solid #C9D0D6;vertical-align:top}
+td:first-child{color:#4A5560}
+.from{font-size:12px;color:#4A5560;margin-top:6px}
+ol{margin:0;padding-left:20px;font-size:11.5px;color:#4A5560;line-height:1.6}
+ol li{break-inside:avoid;word-break:break-all}
+.tree{margin:0;font-family:'Noto Sans Mono CJK TC',monospace;font-size:13px;line-height:1.6;white-space:pre}
