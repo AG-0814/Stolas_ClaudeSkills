@@ -15,17 +15,18 @@ Stolas 是一組幫助自學的 Claude skill。遇到看不懂的專有名詞、
 
 ```mermaid
 flowchart LR
-    A["一個詞"] --> T["/stolas-thread<br>縱向學習單元"]
-    B["一張詞彙表"] --> W["/stolas-web<br>心智圖主檔"]
-    T -->|教材檔| E["/stolas-exam<br>驗收"]
-    W -->|主檔| E
-    E -->|結果寫回原檔| T
-    E -->|驗收紀錄| W
-    T -->|結案| P["/stolas-print<br>PDF 學習筆記"]
-    W -->|產出 PDF| P
+    A["單詞"] --> T["/stolas-thread<br>縱向學習單元"]
+    B["清單"] --> W["/stolas-web<br>心智圖主檔"]
+    T -->|自動| P["/stolas-print<br>PDF 學習筆記"]
+    T -.->|手動| E["/stolas-exam<br>驗收"]
+    W -.->|手動| P
+    W -.->|手動| E
 ```
 
-- thread 與 web 只負責講解。講過不等於學會，「已掌握」只由 exam 依作答結果判定。
+實線為自動銜接，虛線為手動輸入指令。
+
+- thread 說「結案」後會自動接著產出 PDF；web 要自己說「產出 PDF」或輸入 `/stolas-print`。
+- 驗收一律手動，輸入 `/stolas-exam` 或說「考我」。thread 與 web 只負責講解，講過不等於學會，「已掌握」只由 exam 依作答結果判定。
 - thread 學到一半發現自己一直在問同一層的詞，會建議改用 web；web 想深入某個詞時，會建議另開 thread。
 - print 的內容只取自檔案本身，不依賴對話紀錄，所以可以在新對話中重產。
 
