@@ -13,17 +13,9 @@ Stolas 是一組幫助自學的 Claude skill。遇到看不懂的專有名詞、
 
 ## 四個 skill 怎麼串在一起
 
-```mermaid
-flowchart LR
-    A["單詞"] --> T["/stolas-thread<br>縱向學習單元"]
-    T -...->|手動| E["/stolas-exam<br>驗收"]
-    T ==>|自動| P["/stolas-print<br>PDF 學習筆記"]
-    B["清單"] --> W["/stolas-web<br>心智圖主檔"]
-    W -.->|手動| P
-    W -...->|手動| E
-```
+![Stolas 四個 skill 的銜接方式](images/skill-flow.svg)
 
-實線為自動銜接，虛線為手動輸入指令。
+粗實線為自動銜接，虛線為手動輸入指令。
 
 - thread 說「結案」後會自動接著產出 PDF；web 要自己說「產出 PDF」或輸入 `/stolas-print`。
 - 驗收一律手動，輸入 `/stolas-exam` 或說「考我」。thread 與 web 只負責講解，講過不等於學會，「已掌握」只由 exam 依作答結果判定。

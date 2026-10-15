@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-label="Stolas 四個 skill 的銜接方式：單詞進入 stolas-thread，清單進入 stolas-web；thread 結案後自動交給 stolas-print；web 手動交給 print；兩者都手動交給 stolas-exam。">
+  <style>
+    .page { fill: #ffffff; }
+    .box { fill: #f6f8fa; stroke: #8c959f; stroke-width: 1.5; }
+    .skill { fill: #ddf4ff; stroke: #0969da; stroke-width: 1.5; }
+    .t { fill: #1f2328; font: 15px "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; text-anchor: middle; }
+    .name { font-weight: 600; font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 14px; }
+    .sub { fill: #59636e; font-size: 13px; }
+    .lbl { fill: #1f2328; font: 13px "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; text-anchor: middle; }
+    .lblbg { fill: #ffffff; }
+    .e { fill: none; stroke: #59636e; stroke-width: 1.5; }
+    .auto { fill: none; stroke: #1f2328; stroke-width: 3; }
+    .man { fill: none; stroke: #59636e; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .head { fill: #59636e; }
+    .headauto { fill: #1f2328; }
+    @media (prefers-color-scheme: dark) {
+      .page { fill: #0d1117; }
+      .box { fill: #161b22; stroke: #6e7681; }
+      .skill { fill: #0c2d6b; stroke: #4493f8; }
+      .t, .lbl { fill: #e6edf3; }
+      .sub { fill: #9198a1; }
+      .lblbg { fill: #0d1117; }
+      .e, .man { stroke: #9198a1; }
+      .auto { stroke: #e6edf3; }
+      .head { fill: #9198a1; }
+      .headauto { fill: #e6edf3; }
+    }
+  </style>
+  <defs>
+    <marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path class="headauto" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="page" x="0" y="0" width="760" height="260" rx="8"/>
+
+  <!-- 起點 -->
+  <rect class="box" x="20" y="44" width="90" height="40" rx="6"/>
+  <text class="t" x="65" y="69">單詞</text>
+  <rect class="box" x="20" y="176" width="90" height="40" rx="6"/>
+  <text class="t" x="65" y="201">清單</text>
+
+  <!-- skills -->
+  <rect class="skill" x="150" y="32" width="160" height="64" rx="8"/>
+  <text class="t name" x="230" y="59">/stolas-thread</text>
+  <text class="t sub" x="230" y="80">縱向學習單元</text>
+
+  <rect class="skill" x="150" y="164" width="160" height="64" rx="8"/>
+  <text class="t name" x="230" y="191">/stolas-web</text>
+  <text class="t sub" x="230" y="212">心智圖主檔</text>
+
+  <rect class="skill" x="380" y="98" width="160" height="64" rx="8"/>
+  <text class="t name" x="460" y="125">/stolas-print</text>
+  <text class="t sub" x="460" y="146">PDF 學習筆記</text>
+
+  <rect class="skill" x="590" y="98" width="150" height="64" rx="8"/>
+  <text class="t name" x="665" y="125">/stolas-exam</text>
+  <text class="t sub" x="665" y="146">驗收</text>
+
+  <!-- 起點箭頭 -->
+  <path class="e" d="M110,64 H148" marker-end="url(#h)"/>
+  <path class="e" d="M110,196 H148" marker-end="url(#h)"/>
+
+  <!-- thread → print 自動 -->
+  <path class="auto" d="M310,80 C345,80 345,118 376,118" marker-end="url(#ha)"/>
+  <!-- web → print 手動 -->
+  <path class="man" d="M310,180 C345,180 345,142 376,142" marker-end="url(#h)"/>
+  <!-- thread → exam 手動 (上方繞過) -->
+  <path class="man" d="M310,46 H645 Q665,46 665,66 V96" marker-end="url(#h)"/>
+  <!-- web → exam 手動 (下方繞過) -->
+  <path class="man" d="M310,214 H645 Q665,214 665,194 V164" marker-end="url(#h)"/>
+
+  <!-- 標籤 -->
+  <rect class="lblbg" x="320" y="88" width="34" height="20" rx="3"/>
+  <text class="lbl" x="337" y="103">自動</text>
+  <rect class="lblbg" x="320" y="152" width="34" height="20" rx="3"/>
+  <text class="lbl" x="337" y="167">手動</text>
+  <rect class="lblbg" x="443" y="36" width="34" height="20" rx="3"/>
+  <text class="lbl" x="460" y="51">手動</text>
+  <rect class="lblbg" x="443" y="204" width="34" height="20" rx="3"/>
+  <text class="lbl" x="460" y="219">手動</text>
+</svg>
