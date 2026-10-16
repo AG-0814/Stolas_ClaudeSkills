@@ -9,7 +9,7 @@ Stolas 是一組幫助自學的 Claude skill。遇到看不懂的專有名詞、
 | [stolas-thread](stolas-thread/) | v6 | 手上只有一個詞 | 一條線：AI 先排好脈絡地圖，沿上游、本體、下游縱向展開成學習單元 |
 | [stolas-web](stolas-web/) | v3 | 手上有一張詞彙表 | 一張網：依你點名逐一拆解，把詞與詞的從屬、對比、因果攤成心智圖 |
 | [stolas-exam](stolas-exam/) | v2 | 已有 thread 教材或 web 主檔 | 用文字作答的題目驗收，批改後把結果寫回原檔 |
-| [stolas-print](stolas-print/) | v1 | thread 教材已結案，或 web 主檔任何時候 | 產出 PDF 學習筆記 |
+| [stolas-print](stolas-print/) | v2 | thread 教材已結案，或 web 主檔任何時候 | 產出 PDF 學習筆記 |
 
 ## 四個 skill 怎麼串在一起
 

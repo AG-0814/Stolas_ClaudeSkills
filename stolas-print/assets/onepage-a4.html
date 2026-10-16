@@ -80,14 +80,14 @@ footer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;backg
      起點 ≤ 24 字；卡片名稱 ≤ 6 字、標籤 ≤ 4 字、說明 ≤ 30 字；結果 ≤ 30 字。
      結果可以一格跨多欄 (span2、span3)，也可以每欄各一格。
      經典文本單元：起點寫全篇主旨，卡片寫各段或各聯的功能，結果寫全篇結構 (例如「秋景 → 身世 → 病愁」)。
-     換成圖片：符合 references/doc-template.md「一頁重點的圖片」的條件時，整個 01 section (或 02、03 其中一個 section) 可以換成以下結構，
-     圖片檔放在本 HTML 同一個資料夾：
+     換成圖片：依 references/thread-print.md「一頁重點的圖片」。示意圖換掉整個 01 section；實體圖片換掉整個 03 section (比較表不放，其他區塊不動)。
+     使用以下結構，編號改成所在位置 (01 或 03)，圖片檔放在本 HTML 同一個資料夾：
        <section class="fig">
        <div class="sh"><span class="no mono">01</span><h2>【圖的標題】</h2></div>
        <img src="【圖片檔名.svg 或 .jpg】" alt="【圖說】">
        <p class="cap">【圖說 ≤ 30 字】｜【出處、作者與授權，例如 NOAA，公有領域；自繪示意圖則寫「本單元自繪」】</p>
        </section>
-     放在 02 或 03 位置時，把 max-height 的限制保留原樣即可，版面會自動縮放。 -->
+     放在 03 位置時，max-height 的限制保留原樣即可，版面會自動縮放。 -->
 <section class="flow">
 <div class="sh"><span class="no mono">01</span><h2>【核心機制的標題】</h2></div>
 <div class="source">【起點】</div>
@@ -104,10 +104,11 @@ footer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;backg
 </div>
 </section>
 
-<!-- 02 與 03：左右兩張重點卡，各選一種形式 (以下兩種形式可以互換位置)：
-     A. 數字對比 + 1 到 2 條要點：適合「關鍵數字、前後變化」。標籤 ≤ 12 字、數值 ≤ 8 字、要點每條 ≤ 34 字。
-     B. 對照表 3 列：適合「和相近概念的差別」(辨析)。每格 ≤ 9 字。
-     也可以兩張都用要點 (只保留 .pts)，每張 2 到 3 條。 -->
+<!-- 02 與 03：左右兩張重點卡，位置固定。
+     02：數字對比 + 1 到 2 條要點，適合「關鍵數字、前後變化」。標籤 ≤ 12 字、數值 ≤ 8 字、要點每條 ≤ 34 字。
+         主題沒有關鍵數字時，只保留 .pts，2 到 3 條。
+     03：比較表 3 列，挑「能替這一整頁輔助說明」的那張，規則見 references/thread-print.md「03 比較表的挑選」。每格 ≤ 9 字。
+         有實體圖片時，整個 03 換成圖片 (見上方 01 註解中的 fig 結構)。教材沒有可用的對照時，03 只保留 .pts。 -->
 <div class="row c2" style="gap:20px">
 <section>
 <div class="sh"><span class="no mono">02</span><h2>【重點卡一標題】</h2></div>

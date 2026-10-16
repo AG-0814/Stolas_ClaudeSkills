@@ -67,11 +67,11 @@ stolas-thread 與 stolas-web 的檔案是 Markdown 工作底稿，本技能把�
 
 ## 參考檔案
 
-- `references/thread-print.md`：thread 教材的產出步驟、一頁重點的圖片判斷、印刷版結構。thread 模式讀取。
+- `references/thread-print.md`：thread 教材的產出步驟、一頁重點的圖片位置、03 比較表的挑選、印刷版結構。thread 模式讀取。
 - `references/visual-toolkit.md`：依繪圖規格重繪 SVG 的規範。thread 模式重繪圖片前讀取。
 - `references/web-print.md`：web 主檔的版面規則與執行方式。web 模式讀取。
 - `assets/onepage-a4.html`：thread 一頁重點模板 (直式 A4)，填寫規則寫在檔內註解。
 - `assets/palette.json`：學科分類對應的配色，兩支腳本共用，不需要手動編輯。
 - `assets/web-print.css`：web PDF 的樣式，由 `build_web_pdf.py` 讀取。
 - `scripts/build_pdf.py`：thread 印刷版 Markdown 轉 PDF，可加 `--onepage` 把一頁重點放在第一頁。
-- `scripts/build_web_pdf.py`：web 主檔直接轉 PDF，版面與挑選規則都在腳本內。
+- `scripts/build_web_pdf.py`：web 主檔直接轉 PDF，版面規則在腳本內；封面比較表由 `--table` 指定。

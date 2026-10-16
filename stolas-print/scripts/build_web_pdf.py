@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """把 stolas-web 主檔 (Markdown) 轉成 PDF 名詞速查。
 
-用法：python build_web_pdf.py 主檔.md 輸出.pdf
+用法：python build_web_pdf.py 主檔.md 輸出.pdf [--table "比較表標題"]
 
 版面：
 - 第 1 頁封面 (固定一頁)：標頭 (主題背景卡第一句) → 關鍵字地圖 (主檔 Mermaid 心智圖，去掉〔待拆〕) → 比較表一張 (有的話)
   → 「每個詞一句話」(封面放得下才放)。腳本會實際排版量高度，放不下的項目依優先順序移到後面。
 - 第 2 頁起依序流動：每個詞一句話、資料來源 (8 筆以上另起一頁)。單一條目、表格、標題都不跨頁切斷。
-- 比較表挑「表頭與第一欄中，恰好是主檔關鍵字的格數最多」的一張，平手取列數多者。
+- 比較表由 --table 指定 (呼叫者依 references/web-print.md 判斷哪張最能替封面輔助說明)。
+  沒有指定時才退回機械挑法：表頭與第一欄中恰好是主檔關鍵字的格數最多者，平手取列數多者。
+  指定的標題對不上任何表時，列出所有標題並以代碼 4 結束。
 - 配色依 frontmatter 的學科標籤 (學群) 讀 assets/palette.json，沒有學科時用預設配色。
 - 不收驗收紀錄、比喻與其餘比較表，內容只取自主檔，不補寫。
 
@@ -27,7 +29,7 @@ def palette(category):
     g = pal['groups'].get(category or '') or pal['default']
     return g['ink'], g['soft']
 
-def parse(md):
+def parse(md, want=None):
     head = md.split('\n# ')[0]
     fm = dict(re.findall(r'^(\w+):\s*(.+)$', head, re.M))
     cat = None
@@ -62,7 +64,16 @@ def parse(md):
     def score(t):
         cells = {re.sub(r'\s*\(.*', '', c).strip() for c in t['rows'][0] + [r[0] for r in t['rows']]}
         return len(names & cells)
-    best = max(tables, key=lambda t: (score(t), len(t['rows'])), default=None)
+    if want:
+        norm = lambda x: re.sub(r'\s+', '', x)
+        hit = [t for t in tables if norm(t['title']) == norm(want)] or [t for t in tables if norm(want) in norm(t['title'])]
+        if not hit:
+            print('[table] 找不到標題為「%s」的比較表，主檔中的比較表標題：' % want, file=sys.stderr)
+            for t in tables: print('  - ' + t['title'], file=sys.stderr)
+            sys.exit(4)
+        best = hit[0]
+    else:
+        best = max(tables, key=lambda t: (score(t), len(t['rows'])), default=None)
     date = fm.get('updated') or fm.get('created') or ''
     return dict(topic=fm['topic'].strip(), date=date.strip(), cat=cat, first=first, mm=mm, tree=tree,
                 ents=ents, best=best, ntab=len(tables), srcs=srcs)
@@ -93,8 +104,8 @@ def sec(no, title, inner, cls='', hint=''):
     h = f'<span class="hint">{esc(hint)}</span>' if hint else ''
     return f'<section class="{cls}"><div class="sh"><span class="no mono">{no}</span><h2>{esc(title)}</h2>{h}</div>{inner}</section>'
 
-def build(md_path, pdf_path):
-    d = parse(open(md_path, encoding='utf-8').read())
+def build(md_path, pdf_path, want=None):
+    d = parse(open(md_path, encoding='utf-8').read(), want)
     ink, soft = palette(d['cat'])
     css = open(os.path.join(HERE, '..', 'assets', 'web-print.css'), encoding='utf-8').read()
     css += f':root{{--ink:{ink};--soft:{soft}}}'
@@ -165,5 +176,9 @@ def build(md_path, pdf_path):
     print(f'[ok] {pdf_path}')
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3: sys.exit(__doc__)
-    build(os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2]))
+    args = sys.argv[1:]
+    want = None
+    if '--table' in args:
+        i = args.index('--table'); want = args[i + 1]; del args[i:i + 2]
+    if len(args) != 2: sys.exit(__doc__)
+    build(os.path.abspath(args[0]), os.path.abspath(args[1]), want)
