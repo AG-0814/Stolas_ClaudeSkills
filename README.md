@@ -1,7 +1,7 @@
 # Stolas：AI 助學 Claude Skills
 
-## Human Intro
-Stolas是一個Claude skill，但其他AI應該也能用，樣本與產出檔基本上都是通用格式。
+## User Intro
+Stolas是一個Claude skill，但理論上其他AI應該也能用，.skill改副檔名為.zip就能解壓縮了，裡面打包的樣本、產出程式碼與結果檔案基本上都是通用格式。
 但其他AI使用時可能要根據它有缺漏的地方，自己在Skill.md主檔案的「模型補丁」節進行滾動修正。
 BTW，根據社區實測，Gemini-4-Argon還是認不出自己具體是哪個模型，通用的寫「Gemini」建立補丁詞條就好。
 
