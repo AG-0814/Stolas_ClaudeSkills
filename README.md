@@ -1,16 +1,18 @@
 # Stolas：AI 助學 Claude Skills
 
 ## User Intro
-Stolas是一個Claude skill，但理論上其他AI應該也能用，.skill改副檔名為.zip就能解壓縮了，裡面打包的樣本、產出程式碼與結果檔案基本上都是通用格式。
-但其他AI使用時可能要根據它有缺漏的地方，自己在Skill.md主檔案的「模型補丁」節進行滾動修正。
-BTW，根據社區實測，Gemini-4-Argon還是認不出自己具體是哪個模型，通用的寫「Gemini」建立補丁詞條就好。
+Stolas 是一個 Claude skill，但理論上其他 AI 應該也能用，你把 .skill 副檔名改為 .zip 就能解壓縮了，裡面打包的樣本、產出PDF的程式碼與結果檔案基本上都是通用格式。
+其他 AI 在使用時可能要根據它有缺漏的地方，由你自己在 SKILL.md 主檔案的「模型補丁」節進行滾動修正。
+BTW，根據社區實測，Gemini-4-Argon 還是認不出自己具體是哪個模型，僅寫「Gemini」建立補丁詞條就好，不要細分模型型號。
 
-另外，這個Skill的主要目的是為了幫助自己在廣大的資訊海洋裡，根據某項單點資訊吸收知識。
-簡單來說就是讓AI作為科普方，你得以邊學邊驗證它跟社區上的其他人講的一不一樣，兩方的側重點又各自是什麼。
+本人創建這個 Skill 的主要目的是為了幫助我在廣大的資訊海洋裡，根據某個單點資訊吸收知識。
+自行根據你擁有的資訊多寡選用 -thread 或 -web，大原則自行參照下方由 claude 統整的表格。
+讓 AI 作為科普方，你得以邊學邊驗證它跟社區上的其他人講的一不一樣，兩方的側重點又各自是什麼，多方來源比對才能有效學習到東西，我是這麼想的啦。
 
-根據你擁有的資訊多寡自由選用-thread或-web，大原則自行參照下方claude寫的表格。
+如果你在尋找的是系統性教你某個課程或技能 (如：繪畫、編織、寫code等)，
+可以參照致謝中 Matt Pocock 的 [mattpocock/skills](https://github.com/mattpocock/skills) 倉庫，它那個 `/teach` 的 Skill 說不定對你更有用一些。
 
-範例檔案位於此[Printed-example-PDF](https://github.com/AG-0814/Stolas_ClaudeSkills/tree/main/PrintedPDF)，後續若還有更新會逐步傳入此資料夾。
+範例檔案位於此 [Printed-example-PDF](https://github.com/AG-0814/Stolas_ClaudeSkills/tree/main/PrintedPDF)，後續若還有更新會再傳入此資料夾。
 
 ## Claude Intro
 Stolas 是一組幫助自學的 Claude skill。遇到看不懂的專有名詞、外文術語或古典文本時，用它把一個詞展開成完整的學習單元，或把一整串詞攤成一張關係圖，學完可以驗收，最後產出 PDF 學習筆記留著回顧。所有內容會整併成 Markdown 檔，附 Obsidian 可讀取的學科標籤。
