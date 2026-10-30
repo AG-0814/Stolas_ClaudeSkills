@@ -1,5 +1,18 @@
 # Stolas：AI 助學 Claude Skills
 
+## Human Intro
+Stolas是一個Claude skill，但其他AI應該也能用，樣本與產出檔基本上都是通用格式。
+但其他AI使用時可能要根據它有缺漏的地方，自己在Skill.md主檔案的「模型補丁」節進行滾動修正。
+BTW，根據社區實測，Gemini-4-Argon還是認不出自己具體是哪個模型，通用的寫「Gemini」建立補丁詞條就好。
+
+另外，這個Skill的主要目的是為了幫助自己在廣大的資訊海洋裡，根據某項單點資訊吸收知識。
+簡單來說就是讓AI作為科普方，你得以邊學邊驗證它跟社區上的其他人講的一不一樣，兩方的側重點又各自是什麼。
+
+根據你擁有的資訊多寡自由選用-thread或-web，大原則自行參照下方claude寫的表格。
+
+範例檔案位於此[Printed-example-PDF](https://github.com/AG-0814/Stolas_ClaudeSkills/tree/main/PrintedPDF)，後續若還有更新會逐步傳入此資料夾。
+
+## Claude Intro
 Stolas 是一組幫助自學的 Claude skill。遇到看不懂的專有名詞、外文術語或古典文本時，用它把一個詞展開成完整的學習單元，或把一整串詞攤成一張關係圖，學完可以驗收，最後產出 PDF 學習筆記留著回顧。所有內容會整併成 Markdown 檔，附 Obsidian 可讀取的學科標籤。
 
 系列共四個 skill，各自獨立安裝，彼此透過檔案銜接。
